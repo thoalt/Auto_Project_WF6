@@ -8,17 +8,18 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 from pages.LoginPage import LoginPage
 from utilites.handle_config import ConfigParserIni
+from utilites.handle_excel import ExcelPaser
 from selenium.webdriver.remote.webdriver import WebDriver
 import subprocess
 
 
 @pytest.fixture(autouse=True, scope="class")
-def setup(browser=None):
-    # try:
-    #     # Kill all process of chromedriver before create new
-    #     subprocess.call("TASKKILL /f  /IM  CHROMEDRIVER.EXE")
-    # except:
-    #     pass
+def setup(browser):
+    try:
+        # Kill all process of chromedriver before create new
+        subprocess.call("TASKKILL /f  /IM  CHROMEDRIVER.EXE")
+    except:
+        pass
 
     if browser == "Chrome":
         driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
@@ -29,14 +30,10 @@ def setup(browser=None):
     elif browser == "Edge":
         driver = webdriver.Edge(executable_path=EdgeChromiumDriverManager().install())
     else:
-        driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
-
-    #driver.maximize_window()
+        driver = webdriver.Chrome(executable_path="E:\Auto_SeleniumTesting\Wifi6_Mesh_Project\Drivers\chromedriver.exe")
+        #driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
     driver.implicitly_wait(10)
     return driver
-    # request.cls.driver = driver# return driver
-    # yield
-    # driver.close()
 
 
 @pytest.fixture(autouse=True, scope="class")
@@ -57,6 +54,12 @@ def login_webpage(request, setup):
         driver.quit()
         raise Exception("Login Failed!!!! \n" + str(exc))
 
+@pytest.fixture(autouse=True, scope="class")
+def get_workbook(request):
+    workbook_data = ExcelPaser.open_workbook()
+    request.cls.workbook = workbook_data
+    yield
+    workbook_data.close()
 
 def pytest_addoption(parser):
     parser.addoption("--browser")

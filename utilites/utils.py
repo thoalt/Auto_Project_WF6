@@ -5,7 +5,7 @@ from openpyxl import load_workbook
 from openpyxl.worksheet.worksheet import Worksheet
 
 class Utils(softest.TestCase):
-    def assert_value_in_list(self, listVal, textVal):
+    def assert_value_in_list_ele(self, listVal, textVal):
         for val in listVal:
             self.soft_assert(self.assertEqual, val.text, textVal)
             if val.text == textVal:
@@ -14,8 +14,32 @@ class Utils(softest.TestCase):
                 print("Test Fail")
         self.assert_all()
 
+    def assert_equal_value_in_list_data(self, dataInputlst, dataVal):
+        msg = ''
+        for dataInput in dataInputlst:
+            data = dataInput[0]
+            expectVal = dataInput[1]
+            if expectVal != dataVal:
+                msg = "Data input: %s" %(data)
+            self.soft_assert(self.assertEqual, expectVal, dataVal, msg)
+        self.assert_all()
+
+
+    def assert_contain_value_in_list_data(self, dataInputlst, dataVal):
+        msg = ''
+        for dataInput in dataInputlst:
+            data = dataInput[0]
+            expectVal = dataInput[1]
+            if dataVal not in expectVal:
+                msg = "Data input: %s" %(data)
+            self.soft_assert(self.assertIn, dataVal, expectVal, msg)
+        self.assert_all()
+
     def assert_equal(self, textVal, expectVal):
         self.soft_assert(self.assertEqual, textVal, expectVal)
+
+    def get_testcase_id(self, functionName):
+        return functionName.replace('test_', '')
 
     @staticmethod
     def loggen(logLevel=logging.DEBUG):
@@ -38,23 +62,3 @@ class Utils(softest.TestCase):
         # Add console handler to logger
         logger.addHandler(fh)
         return logger
-
-    @staticmethod
-    def read_data_from_exel(file_name, sheet):
-        dataList = []
-        wb = load_workbook(filename=file_name)
-        sh: Worksheet = wb[sheet]
-        row_ct = sh.max_row
-        col_ct = sh.max_column
-
-        for i in range(2, row_ct+1):
-            row = []
-            for j in range(2, col_ct + 1):
-                row.append(sh.cell(row=i, column=j).value)
-            dataList.append(row)
-        wb.close()
-        return dataList
-
-# data = Utils()
-# data_get = data.read_data_from_exel("E:\\Auto_WorkingTesting\\ATFDemo\\testdata\\testdata.xlsx", "Sheet1")
-# print(data_get)

@@ -1,3 +1,16 @@
 {
-  "suites": []
+  "suites": [
+    {
+      "description": null,
+      "duration": 65961,
+      "host": "DESKTOP-U69VAE1",
+      "name": "tests/MOD/test_RULE_FACTORY_DEVICENAME.py::Test_RULE_FACTORY_DEVICENAME",
+      "parentUuid": "424c08fd-e427-4858-bd2e-7b05779e5ecd",
+      "start": 1640743368174,
+      "status": null,
+      "stop": 1640743434135,
+      "thread": "DESKTOP-U69VAE1.MainThread(16840)",
+      "uuid": "d6b92ccc-5ff2-44f7-8bf8-aa5508477ea7"
+    }
+  ]
 }

@@ -1,1 +1,1 @@
-pytest_plugins = ["testops_pytest.listener", ]
+#pytest_plugins = ["testops_pytest.listener", ]

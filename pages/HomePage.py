@@ -4,7 +4,7 @@ from base.base_page import BasePage
 class HomePage(BasePage):
     lnkHomeTab_xpath = "//a[@id='titleHome']"
     btnEdit_xpath = "//img[@title='Detail Information' and @onclick='Showdetail(1);']"
-    btnEditDevice_xpath = "//td[@class='hdContent02 hdContent01_clickable']"
+    btnEditDevice_xpath = "//td[@class='hdContent01 hdContent01_clickable']"
     txtDeviceName_xpath = "//input[@id='INPUT_DEVICE']"
     lbDeviceName_xpath = "//td[contains(text(),'Device Name')]"
     txtDeviceLoc_xpath = "//input[@id='INPUT_LOCATION']"

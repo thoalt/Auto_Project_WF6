@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="73.879" timestamp="2022-01-12T11:54:41.377707" hostname="DESKTOP-U69VAE1"><testcase classname="tests.MOD.test_RULE_FACTORY_DEVICENAME.Test_RULE_FACTORY_DEVICENAME" name="test_RULE_FACTORY_DEVICENAME_01" time="37.081" /><testcase classname="tests.MOD.test_RULE_FACTORY_DEVICENAME.Test_RULE_FACTORY_DEVICENAME" name="test_RULE_FACTORY_DEVICENAME_02" time="4.665" /><testcase classname="tests.MOD.test_RULE_FACTORY_DEVICENAME.Test_RULE_FACTORY_DEVICENAME" name="test_RULE_FACTORY_DEVICENAME_03" time="5.463"><failure message="AssertionError: ++++ soft assert failure details follow below ++++&#10;&#10;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&#10;The following failure was found in &quot;test_RULE_FACTORY_DEVICENAME_03&quot; (utilites.utils.Utils):&#10;+----------------------+----------------------+----------------------+&#10;Traceback (most recent call last):&#10;  File &quot;E:\Auto_WorkingTesting\Auto_Project_WF6\utilites\utils.py&quot;, line 35, in assert_contain_value_in_list_data&#10;    self.soft_assert(self.assertIn, dataVal, expectVal, msg)&#10;  File &quot;E:\Auto_WorkingTesting\Auto_Project_WF6\tests\MOD\test_RULE_FACTORY_DEVICENAME.py&quot;, line 61, in test_RULE_FACTORY_DEVICENAME_03&#10;    self.ut.assert_contain_value_in_list_data(actualResult, expected)&#10;  File &quot;c:\users\mimo\appdata\local\programs\python\python39\lib\site-packages\softest\case.py&quot;, line 62, in soft_assert&#10;    assert_method(*arguments, **keywords)&#10;  File &quot;c:\users\mimo\appdata\local\programs\python\python39\lib\unittest\case.py&quot;, line 1098, in assertIn&#10;    self.fail(self._formatMessage(msg, standardMsg))&#10;  File &quot;c:\users\mimo\appdata\local\programs\python\python39\lib\unittest\case.py&quot;, line 670, in fail&#10;    raise self.failureException(msg)&#10;AssertionError: 'Input length must be between 2 and 32' not found in '' : Data input: &#10;&#10;-+ [1/1] +-">self = &lt;test_RULE_FACTORY_DEVICENAME.Test_RULE_FACTORY_DEVICENAME testMethod=test_RULE_FACTORY_DEVICENAME_03&gt;
+
+    def test_RULE_FACTORY_DEVICENAME_03(self):
+        # Read data from Excel file via testcase ID
+        testID = self.ut.get_testcase_id(inspect.stack()[0][3])
+        dataLst, expected = ExcelPaser.read_data_via_testcaseID(self.excel_file, self.excel_sheet, testID)
+    
+        # Setting Device Name, then get Actual Result
+        actualResult = self.setting_device_name(dataLst)
+    
+        # Verify Alert text with expected result
+&gt;       self.ut.assert_contain_value_in_list_data(actualResult, expected)
+
+tests\MOD\test_RULE_FACTORY_DEVICENAME.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+utilites\utils.py:36: in assert_contain_value_in_list_data
+    self.assert_all()
+c:\users\mimo\appdata\local\programs\python\python39\lib\site-packages\softest\case.py:139: in assert_all
+    self.fail(''.join(failure_output))
+E   AssertionError: ++++ soft assert failure details follow below ++++
+E   
+E   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+E   The following failure was found in "test_RULE_FACTORY_DEVICENAME_03" (utilites.utils.Utils):
+E   +----------------------+----------------------+----------------------+
+E   Traceback (most recent call last):
+E     File "E:\Auto_WorkingTesting\Auto_Project_WF6\utilites\utils.py", line 35, in assert_contain_value_in_list_data
+E       self.soft_assert(self.assertIn, dataVal, expectVal, msg)
+E     File "E:\Auto_WorkingTesting\Auto_Project_WF6\tests\MOD\test_RULE_FACTORY_DEVICENAME.py", line 61, in test_RULE_FACTORY_DEVICENAME_03
+E       self.ut.assert_contain_value_in_list_data(actualResult, expected)
+E     File "c:\users\mimo\appdata\local\programs\python\python39\lib\site-packages\softest\case.py", line 62, in soft_assert
+E       assert_method(*arguments, **keywords)
+E     File "c:\users\mimo\appdata\local\programs\python\python39\lib\unittest\case.py", line 1098, in assertIn
+E       self.fail(self._formatMessage(msg, standardMsg))
+E     File "c:\users\mimo\appdata\local\programs\python\python39\lib\unittest\case.py", line 670, in fail
+E       raise self.failureException(msg)
+E   AssertionError: 'Input length must be between 2 and 32' not found in '' : Data input: 
+E   
+E   -+ [1/1] +-</failure></testcase><testcase classname="tests.MOD.test_RULE_FACTORY_DEVICENAME.Test_RULE_FACTORY_DEVICENAME" name="test_RULE_FACTORY_DEVICENAME_04" time="2.955" /><testcase classname="tests.MOD.test_RULE_FACTORY_DEVICENAME.Test_RULE_FACTORY_DEVICENAME" name="test_RULE_FACTORY_DEVICENAME_05" time="2.792" /><testcase classname="tests.MOD.test_RULE_FACTORY_DEVICENAME.Test_RULE_FACTORY_DEVICENAME" name="test_RULE_FACTORY_DEVICENAME_06" time="16.306" /></testsuite></testsuites>
